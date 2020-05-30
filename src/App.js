@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Navbar from "./components/navbar.component";
+import ExerciseList from  "./components/exercise-list.component";
+import EditExercise from "./components/edit-exercise.component";
+import CreateExercise from "./components/create-exercise.component";
+import CreateUser from "./components/create-user.component"
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Router>
+      <div className="container">
+        <Navbar>
+          <br/>
+          <Route path="/" exact component={ExerciseList}/>
+          <Route path="/edit/:id" component={EditExercise}/>
+          <Route path="/create" component={CreateExercise}/>
+          <Route path="/use" component={CreateUser}/>
+        </Navbar>
       </div>
+      </Router>
     );
   }
 }
